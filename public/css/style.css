@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/* reset */
+body, h1, h4, h5, h6, p, address,
+ul, ol, dl, dt, dd, img, form, td , table{
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	text-align: left;
+	list-style-type: none;
+	border-collapse: collapse;
+}
+
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+
+/*plan.blade*/
+.plan input {
+    display: none;
+}
+
+.plan input[type="radio"]:checked.basic + label {
+  color: #fff;
+  border: 2px solid #9400d3;
+  background-color: #9400d3;
+}
+.plan input[type="radio"]:checked.standard + label {
+  color: #fff;
+  border: 2px solid #9400d3;
+  background-color: #9400d3;
+}
+.plan input[type="radio"]:checked.premium + label {
+  color: #fff;
+  border: 2px solid #9400d3;
+  background-color: #9400d3;
+}
+
+.plan label {
+  color: #ddd;
+  border: 2px solid #ddd;
+  text-align: center;
+  display: inline-block;
+  padding: 5px 0px;
+  width: 120px;
+}
+
+.plan label:hover {
+    color: #aaa;
+    border: 2px solid #aaa;
+    cursor: pointer;
+}
+
+/*カード情報「subscription.blade.php」*/
+#card-element {
+    border-radius: 4px 4px 0 0 ;
+    padding: 12px;
+    border: 1px solid rgba(50, 50, 93, 0.1);
+    height: 44px;
+    width: 100%;
+    background: white;
+    }
+#card-element,#card-holder-name {
+    border-radius: 4px 4px 0 0 ;
+    padding: 12px;
+    border: 1px solid rgba(50, 50, 93, 0.1);
+    height: 44px;
+    width: 100%;
+    background: white;
+}
+button#card-button {
+    background: #5469d4;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    border-radius: 0 0 4px 4px;
+    border: 0;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+    width: 100%;
+}

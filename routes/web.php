@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UsersController;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +25,26 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// カード情報に関する処理
+
+Route::get('/subscription', function () {
+    return view('subscription', [
+            'intent' => auth()->user()->createSetupIntent()
+        ]);
+})->middleware(['auth'])->name('subscription');
+
+Route::post('/user/subscribe', function (Request $request) {
+    $request->user()->newSubscription(
+        'default', 'price_1N5UtVBqtwf4uKqU3upnzwV7'
+    )->create($request->paymentMethodId);
+    
+    return redirect('/dashboard');
+    
+})->middleware(['auth'])->name('subscribe.post');
 
 require __DIR__.'/auth.php';
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('users', UsersController::class);
+});
+
