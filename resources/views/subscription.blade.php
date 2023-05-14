@@ -12,12 +12,50 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    サブスクリプション
                     <form id="setup-form" action="{{ route('subscribe.post') }}" method="post">
                         @csrf
+                        クレジットカードを選択
                         <input id="card-holder-name" type="text" placeholder="カード名義人" name="card-holder-name">
                         <div id="card-element"></div>
-                        <button id="card-button" data-secret="{{ $intent->client_secret }}">サブスクリプション</button>
+                        
+                        ぴったりのプランをお選びください
+                        <div class="plan">
+                            <input type="radio" name="planChoice" class="basic" id="basic" value="1">
+                            <label for="basic">
+                                ベーシック
+                            </label>
+                            
+                            <input type="radio" name="planChoice" class="standard" id="standard" value="2" checked>
+                            <label for="standard">
+                                スタンダード
+                            </label>
+                            
+                            <input type="radio" name="planChoice" class="premium" id="premium" value="3">
+                            <label for="premium">
+                                プレミアム
+                            </label>
+                        </div>
+                        
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>月額</td>
+                                    <td>2980円</td>
+                                    <td>3980円</td>
+                                    <td>4980円</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td>１か月に利用できるコースの数</td>
+                                    <td>1コース</td>
+                                    <td>2コース</td>
+                                    <td>3コース</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <button id="card-button" class="btn btn-primary btn-block normal-case" data-secret="{{ $intent->client_secret }}">メンバーシップを開始する</button>
                     </form>
                 </div>
             </div>

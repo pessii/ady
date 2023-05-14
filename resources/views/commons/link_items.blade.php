@@ -7,9 +7,6 @@
     <li class="divider lg:hidden"></li>
     {{-- ログアウトへのリンク --}}
     <li><a class="link link-hover" href="#" onclick="event.preventDefault();this.closest('form').submit();">Logout</a></li>
-    <x-nav-link :href="route('subscription')" :active="request()->routeIs('subscription')">
-        {{ __('Subscription') }}
-    </x-nav-link>
 @else
     {{-- ログインページへのリンク --}}
     <li><a class="link link-hover" href="{{ route('login') }}">ログイン</a></li>

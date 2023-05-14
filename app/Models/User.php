@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Cashier\Billable;
 
+use App\Http\Controllers\SubscriptionsController;
+
 // class User extends Authenticatable implements MustVerifyEmail
 class User extends Authenticatable
 {

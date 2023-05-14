@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\SubscriptionsController;
 use Illuminate\Http\Request;
 
 /*
@@ -26,21 +27,14 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 // カード情報に関する処理
-
 Route::get('/subscription', function () {
     return view('subscription', [
             'intent' => auth()->user()->createSetupIntent()
         ]);
 })->middleware(['auth'])->name('subscription');
 
-Route::post('/user/subscribe', function (Request $request) {
-    $request->user()->newSubscription(
-        'default', 'price_1N5UtVBqtwf4uKqU3upnzwV7'
-    )->create($request->paymentMethodId);
-    
-    return redirect('/dashboard');
-    
-})->middleware(['auth'])->name('subscribe.post');
+Route::post('/user/subscribe', [SubscriptionsController::class, 'update'])
+    ->middleware(['auth'])->name('subscribe.post');
 
 require __DIR__.'/auth.php';
 
