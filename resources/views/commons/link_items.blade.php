@@ -1,7 +1,7 @@
 <!--ログイン済みユーザーか判定-->
 @if (Auth::check())
-    {{-- ユーザ一覧ページへのリンク --}}
-    <li><a class="link link-hover" href="#">Users</a></li>
+    {{-- 講師ページへのリンク --}}
+    <li><a class="link link-hover" href="{{ route('teacher.instructor') }}">講師</a></li>
     {{-- ユーザ詳細ページへのリンク --}}
     <li><a class="link link-hover" href="#">{{ Auth::user()->name }}</a></li>
     <li class="divider lg:hidden"></li>

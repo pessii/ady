@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('teacher_id')->charset(null)->nullable();
+        Schema::table('lectures', function (Blueprint $table) {
+            $table->string('file_path')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('teacher_id')->nullable(false);
+        Schema::table('lectures', function (Blueprint $table) {
+            $table->dropColumn('file_path');
         });
     }
 };
